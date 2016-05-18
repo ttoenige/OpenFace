@@ -69,6 +69,10 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+// TBB includes
+#include <tbb/atomic.h>
+#include <tbb/parallel_for.h>
+
 #define INFO_STREAM( stream ) \
 std::cout << stream << std::endl
 
