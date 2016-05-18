@@ -141,10 +141,17 @@ else()
 endif()
 
 # dlib
-include_directories(lib/3rdParty/dlib/include)
-
-# dlib library
-add_subdirectory(lib/3rdParty/dlib)
+if(WIN32)
+    include_directories(lib/3rdParty/dlib/include)
+    add_subdirectory(lib/3rdParty/dlib)
+    set (dlib_LIBRARIES "dlib")
+    MESSAGE("  dlib_LIBRARIES: ${dlib_LIBRARIES}")
+else()
+    FIND_PACKAGE(dlib REQUIRED)
+    INCLUDE_DIRECTORIES(${dlib_INCLUDE_DIRS})
+    MESSAGE("  dlib_INCLUDE_DIRS: ${dlib_INCLUDE_DIRS}")
+    MESSAGE("  dlib_LIBRARIES: ${dlib_LIBRARIES}")
+endif()
 
 # LandmarkDetector library
 add_subdirectory(lib/local/LandmarkDetector)
