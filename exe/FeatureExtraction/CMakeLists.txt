@@ -11,3 +11,5 @@ target_link_libraries(FeatureExtraction FaceAnalyser)
 target_link_libraries(FeatureExtraction ${dlib_LIBRARIES})
 
 target_link_libraries(FeatureExtraction ${OpenCV_LIBS} ${Boost_LIBRARIES} ${TBB_LIBRARIES})
+
+install (TARGETS FeatureExtraction DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

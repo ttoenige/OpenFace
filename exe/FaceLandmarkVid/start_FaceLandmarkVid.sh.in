@@ -1,0 +1,3 @@
+#!/bin/bash
+prefix="@CMAKE_INSTALL_PREFIX@"
+exec "$prefix/bin/FaceLandmarkVid" -mloc "$prefix/share/OpenFace/model/main_clnf_general.txt" "$@"

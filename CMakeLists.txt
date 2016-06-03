@@ -3,6 +3,8 @@ project (OpenFace)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 find_package( OpenCV REQUIRED )
 MESSAGE("OpenCV information:") 
 MESSAGE("  OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}") 
@@ -14,7 +16,7 @@ find_package( Boost 1.5.9 REQUIRED COMPONENTS filesystem system)
 MESSAGE("Boost information:") 
 MESSAGE("  Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}") 
 MESSAGE("  Boost_LIBRARIES: ${Boost_LIBRARIES}") 
-MESSAGE("  Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}") 
+MESSAGE("  Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}")
 
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS}/boost)
