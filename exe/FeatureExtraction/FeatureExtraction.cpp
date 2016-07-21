@@ -842,6 +842,13 @@ int main (int argc, char **argv)
                     INFO_STREAM("FPS of the video file cannot be determined, assuming 30");
                     fps_vid_in = 30;
                 }
+            } else {
+                INFO_STREAM( "Attempting to capture from device: " << d );
+                video_capture = cv::VideoCapture( d );
+
+                // Read a first frame often empty in camera
+                cv::Mat captured_image;
+                video_capture >> captured_image;
             }
 
             if (!video_capture.isOpened())
