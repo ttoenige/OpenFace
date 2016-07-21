@@ -101,6 +101,25 @@ FaceModelParameters::FaceModelParameters(vector<string> &arguments)
 			i++;
 
 		}
+        if (arguments[i].compare("-tloc") == 0)
+        {
+            string triangulation_loc = arguments[i + 1];
+            triangulation_location = triangulation_loc;
+            valid[i] = false;
+            valid[i + 1] = false;
+            i++;
+
+        }
+
+        if (arguments[i].compare("-auloc") == 0) {
+            string au_prediction_loc = arguments[i + 1];
+            au_prediction_location = au_prediction_loc;
+            valid[i] = false;
+            valid[i + 1] = false;
+            i++;
+
+        }
+
 		if (arguments[i].compare("-sigma") == 0)
 		{
 			stringstream data(arguments[i + 1]);
@@ -207,6 +226,25 @@ FaceModelParameters::FaceModelParameters(vector<string> &arguments)
 			std::cout << "Could not find the landmark detection model to load" << std::endl;
 		}
 	}
+
+    // Make sure triangulation_location is valid
+    if (!boost::filesystem::exists(boost::filesystem::path(triangulation_location)))
+    {
+        triangulation_location = (root / triangulation_location).string();
+        if (!boost::filesystem::exists(boost::filesystem::path(triangulation_location)))
+        {
+            std::cout << "Could not find the triangulation_location model to load" << std::endl;
+        }
+    }
+
+    if (!boost::filesystem::exists(boost::filesystem::path(au_prediction_location)))
+    {
+        au_prediction_location = (root / au_prediction_location).string();
+        if (!boost::filesystem::exists(boost::filesystem::path(au_prediction_location)))
+        {
+            std::cout << "Could not find the au_prediction_location model to load" << std::endl;
+        }
+    }
 
 }
 
